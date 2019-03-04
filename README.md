@@ -39,3 +39,12 @@ and creases:
 **X:** Only change Width
 
 **Y:** Only change Length
+
+### Notes:
+
+This fork is focused on wrapping the addon in an interface that sticks a bit closer to the Blender UI conventions. That includes:
+
+1. Easy install/uninstall.
+2. UX-congruent modal
+3. Menu integration
+4. Keymap integration
