@@ -1,3 +1,34 @@
+# ***** BEGIN GPL LICENSE BLOCK *****
+#
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+#
+# ***** END GPL LICENCE BLOCK *****
+
+bl_info = {
+    "name": "Edge Chisel",
+    "author": "Slackbeard",
+    "version": (0, 0, 1),
+    "blender": (2, 80, 0),
+    "location": "Operator Search",
+    "description": "Edge Chisel",
+    "warning": "It's a buggy mess",
+    "wiki_url": "",
+    "tracker_url": "",
+    "category": "Mesh"}
+    
 import sys
 import bpy, bmesh
 import pprint
@@ -88,7 +119,7 @@ class ChiselOperator(bpy.types.Operator):
             bm,
             geom=geom,
             offset=.05,
-            offset_type=1,
+            offset_type='OFFSET',
             segments=2,
             profile=.5,
             vertex_only=False,
@@ -351,7 +382,7 @@ class ChiselOperator(bpy.types.Operator):
         elif event.type == 'LEFTMOUSE':
             self.bm.normal_update()
             object.update_tag(refresh={'DATA'})            
-            context.area.header_text_set()
+            context.area.header_text_set(None)
             return {'FINISHED'}
         elif event.type in {'RIGHTMOUSE', 'ESC'}:
             # just returning 'CANCELLED' seems to leave the new geometry
